@@ -1,7 +1,8 @@
 from conans import CMake, ConanFile, tools
+from conans.errors import ConanInvalidConfiguration
 import os
-import textwrap
 import shutil
+import textwrap
 
 required_conan_version = ">=1.33.0"
 
@@ -56,6 +57,9 @@ class PdfiumConan(ConanFile):
     def validate(self):
         if self.settings.compiler.cppstd:
             tools.check_min_cppstd(self, 14)
+        if self.settings.compiler == "gcc":
+            if tools.Version(self.settings.compiler.version) < 8:
+                raise ConanInvalidConfiguration("pdfium needs at least gcc 8")
 
     def export_sources(self):
         shutil.copytree("pdfium", os.path.join(self.export_sources_folder, "pdfium"))
