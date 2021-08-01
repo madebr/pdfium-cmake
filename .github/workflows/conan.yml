@@ -29,7 +29,8 @@ jobs:
   build-conan:
     needs: 'calculate-matrix'
     strategy:
-      matrix: ${{ fromJSON(needs.calculate-matrix.outputs.matrix) }}
+      matrix:
+        include: ${{ fromJSON(needs.calculate-matrix.outputs.matrix) }}
     runs-on: '${{ matrix.os }}'
     steps:
       - uses: actions/checkout@v2
