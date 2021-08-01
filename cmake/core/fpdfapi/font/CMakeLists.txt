@@ -43,7 +43,7 @@ target_link_libraries(pdfium_core_fpdfapi_font
         pdfium::core_fpdfapi_parser
 )
 if(APPLE)
-    target_link_libraries(pdfium_core_fpdfapi_fond
+    target_link_libraries(pdfium_core_fpdfapi_font
         PRIVATE
             "-framework CoreFoundation"
     )
