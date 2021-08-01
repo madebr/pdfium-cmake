@@ -5,18 +5,29 @@ on:
   release:
     types:
       - published
+  schedule:
+    - cron: '0 0 1,15 * *'  # Run approximately every 2 weeks
 
 jobs:
-  build-cmake:
+  calculate-matrix:
+    runs-on: '${{ matrix.os }}'
+    outputs: 'matrix'
+    steps:
+      - with:
+          entrypoint: python
+        run: |
+          import itertools
+          import json
+          os_list = ["ubuntu-latest", "windows-latest", "macos-latest"]
+          branch_list = ["current"]
+          if "${{ github.event_name }}" != "release":
+            branch_list.append("master")
+          matrix = [{"os": os, "branch": branch} for os, branch in itertools.product(os_list, branch_list)]
+          print("::set-output name=matrix::{}".format(json.dumps(matrix)))
+  build-conan:
+    needs: 'calculate-matrix'
     strategy:
-      matrix:
-        include:
-          - os: 'ubuntu-latest'
-            branch: 'current'
-          - os: 'windows-latest'
-            branch: 'current'
-          - os: 'macos-latest'
-            branch: 'current'
+      matrix: ${{ fromJSON(needs.calculate-matrix.outputs.matrix) }}
     runs-on: '${{ matrix.os }}'
     steps:
       - uses: actions/checkout@v2
@@ -26,6 +37,8 @@ jobs:
       - name: 'Install python dependencies'
         run: |
           python -m pip install -r requirements.txt
+      - name: 'Install conan'
+        run: |
           python -m pip install conan
       - name: 'Download pdfium sources'
         run: |
