@@ -90,3 +90,9 @@ class PdfiumConan(ConanFile):
 
     def package_info(self):
         self.cpp_info.libs = ["pdfium"]
+        if tools.is_apple_os(self.settings.os):
+            self.cpp_info.frameworks.extend(["Appkit", "CoreFoundation", "CoreGraphics"])
+
+        stdcpp_library = tools.stdcpp_library(self)
+        if stdcpp_library:
+            self.cpp_info.system_libs.append(stdcpp_library)
