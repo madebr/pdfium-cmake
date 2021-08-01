@@ -11,9 +11,12 @@ on:
 jobs:
   calculate-matrix:
     runs-on: '${{ matrix.os }}'
-    outputs: 'matrix'
+    outputs:
+      matrix: ${{ steps.calc-build-matrix.outputs.matrix }}
     steps:
-      - with:
+      - name: 'Calculate build matrix'
+        id: calc-build-matrix
+        with:
           entrypoint: python
         run: |
           import itertools
