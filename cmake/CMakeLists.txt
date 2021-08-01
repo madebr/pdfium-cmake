@@ -45,6 +45,20 @@ add_definitions(-DFPDF_IMPLEMENTATION -DCOMPONENT_BUILD)
 set(CMAKE_C_VISIBILITY_PRESET hidden)
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 
+if(WIN32)
+    add_definitions(
+        -DUNICODE -D_UNICODE
+        -DWIN32_LEAN_AND_MEAN
+        -DNOMINMAX
+    )
+endif()
+if(MSVC)
+    add_compile_options(
+        /wd4324
+        /wd4577
+    )
+endif()
+
 set(pdfium_public_headers_impl
     "${PDFIUM_ROOT}/public/cpp/fpdf_deleters.h"
     "${PDFIUM_ROOT}/public/cpp/fpdf_scopers.h"
