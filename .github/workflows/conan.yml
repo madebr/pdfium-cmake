@@ -10,7 +10,7 @@ on:
 
 jobs:
   calculate-matrix:
-    runs-on: '${{ matrix.os }}'
+    runs-on: 'ubuntu-latest'
     outputs:
       matrix: ${{ steps.calc-build-matrix.outputs.matrix }}
     steps:
