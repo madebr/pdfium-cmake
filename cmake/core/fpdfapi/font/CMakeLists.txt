@@ -36,7 +36,7 @@ add_library(pdfium::core_fpdfapi_font ALIAS pdfium_core_fpdfapi_font)
 target_link_libraries(pdfium_core_fpdfapi_font
     PRIVATE
         pdfium::strict_config
-        $<$<BOOL:${APPLE}>:CoreFoundation.framework>
+        $<$<BOOL:${APPLE}>:-framework CoreFoundation>
     PUBLIC
         pdfium::core_fxcrt
         pdfium::core_fxge

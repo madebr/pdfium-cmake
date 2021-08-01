@@ -154,7 +154,7 @@ elseif(APPLE)
     )
     target_link_libraries(pdfium_core_fxge
         PUBLIC
-            CoreGraphics.framework  # FIXME: master pdfium target needs to have this too
+            -framework CoreGraphics  # FIXME: master pdfium target needs to have this too
     )
 elseif(WIN32)
     target_sources(pdfium_core_fxge PRIVATE

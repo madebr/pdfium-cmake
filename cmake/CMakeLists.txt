@@ -221,8 +221,8 @@ endif()
 if(APPLE)
     target_link_libraries(pdfium
         PRIVATE
-            AppKit.framework
-            CoreFoundation.framework
+            -framework AppKit
+            -framework CoreFoundation
     )
 endif()
 set_target_properties(pdfium PROPERTIES
