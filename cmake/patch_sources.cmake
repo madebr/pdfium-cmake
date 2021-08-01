@@ -1,0 +1,12 @@
+# Allow pure static libraries on Windows:
+file(READ "${PDFIUM_ROOT}/public/fpdfview.h" _fpdfview_h)
+if(BUILD_SHARED_LIBS)
+    string(REPLACE "#define FPDF_EXPORT // __declspec(dllexpert)" "#define FPDF_EXPORT __declspec(dllexport)" _new_fpdfview_h "${_fpdfview_h}")
+    string(REPLACE "#define FPDF_EXPORT // __declspec(dllimport)" "#define FPDF_EXPORT __declspec(dllimport)" _new_fpdfview_h "${_new_fpdfview_h}")
+else()
+    string(REPLACE "#define FPDF_EXPORT __declspec(dllexport)" "#define FPDF_EXPORT // __declspec(dllexpert)" _new_fpdfview_h "${_fpdfview_h}")
+    string(REPLACE "#define FPDF_EXPORT __declspec(dllimport)" "#define FPDF_EXPORT // __declspec(dllimport)" _new_fpdfview_h "${_new_fpdfview_h}")
+endif()
+if(NOT _fpdfview_h STREQUAL _new_fpdfview_h)
+    file(WRITE "${PDFIUM_ROOT}/public/fpdfview.h" "${_new_fpdfview_h}")
+endif()

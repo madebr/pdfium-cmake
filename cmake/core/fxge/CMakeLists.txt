@@ -1,0 +1,184 @@
+add_library(pdfium_core_fxge OBJECT EXCLUDE_FROM_ALL
+    "${PDFIUM_ROOT}/core/fxge/cfx_cliprgn.cpp"
+    "${PDFIUM_ROOT}/core/fxge/cfx_cliprgn.h"
+    "${PDFIUM_ROOT}/core/fxge/cfx_color.cpp"
+    "${PDFIUM_ROOT}/core/fxge/cfx_color.h"
+    "${PDFIUM_ROOT}/core/fxge/cfx_defaultrenderdevice.h"
+    "${PDFIUM_ROOT}/core/fxge/cfx_drawutils.cpp"
+    "${PDFIUM_ROOT}/core/fxge/cfx_drawutils.h"
+    "${PDFIUM_ROOT}/core/fxge/cfx_face.cpp"
+    "${PDFIUM_ROOT}/core/fxge/cfx_face.h"
+    "${PDFIUM_ROOT}/core/fxge/cfx_fillrenderoptions.h"
+    "${PDFIUM_ROOT}/core/fxge/cfx_folderfontinfo.cpp"
+    "${PDFIUM_ROOT}/core/fxge/cfx_folderfontinfo.h"
+    "${PDFIUM_ROOT}/core/fxge/cfx_font.cpp"
+    "${PDFIUM_ROOT}/core/fxge/cfx_font.h"
+    "${PDFIUM_ROOT}/core/fxge/cfx_fontcache.cpp"
+    "${PDFIUM_ROOT}/core/fxge/cfx_fontcache.h"
+    "${PDFIUM_ROOT}/core/fxge/cfx_fontmapper.cpp"
+    "${PDFIUM_ROOT}/core/fxge/cfx_fontmapper.h"
+    "${PDFIUM_ROOT}/core/fxge/cfx_fontmgr.cpp"
+    "${PDFIUM_ROOT}/core/fxge/cfx_fontmgr.h"
+    "${PDFIUM_ROOT}/core/fxge/cfx_gemodule.cpp"
+    "${PDFIUM_ROOT}/core/fxge/cfx_gemodule.h"
+    "${PDFIUM_ROOT}/core/fxge/cfx_glyphbitmap.cpp"
+    "${PDFIUM_ROOT}/core/fxge/cfx_glyphbitmap.h"
+    "${PDFIUM_ROOT}/core/fxge/cfx_glyphcache.cpp"
+    "${PDFIUM_ROOT}/core/fxge/cfx_glyphcache.h"
+    "${PDFIUM_ROOT}/core/fxge/cfx_graphstate.cpp"
+    "${PDFIUM_ROOT}/core/fxge/cfx_graphstate.h"
+    "${PDFIUM_ROOT}/core/fxge/cfx_graphstatedata.cpp"
+    "${PDFIUM_ROOT}/core/fxge/cfx_graphstatedata.h"
+    "${PDFIUM_ROOT}/core/fxge/cfx_path.cpp"
+    "${PDFIUM_ROOT}/core/fxge/cfx_path.h"
+    "${PDFIUM_ROOT}/core/fxge/cfx_renderdevice.cpp"
+    "${PDFIUM_ROOT}/core/fxge/cfx_renderdevice.h"
+    "${PDFIUM_ROOT}/core/fxge/cfx_substfont.cpp"
+    "${PDFIUM_ROOT}/core/fxge/cfx_substfont.h"
+    "${PDFIUM_ROOT}/core/fxge/cfx_textrenderoptions.h"
+    "${PDFIUM_ROOT}/core/fxge/cfx_unicodeencoding.cpp"
+    "${PDFIUM_ROOT}/core/fxge/cfx_unicodeencoding.h"
+    "${PDFIUM_ROOT}/core/fxge/dib/cfx_bitmapcomposer.cpp"
+    "${PDFIUM_ROOT}/core/fxge/dib/cfx_bitmapcomposer.h"
+    "${PDFIUM_ROOT}/core/fxge/dib/cfx_bitmapstorer.cpp"
+    "${PDFIUM_ROOT}/core/fxge/dib/cfx_bitmapstorer.h"
+    "${PDFIUM_ROOT}/core/fxge/dib/cfx_cmyk_to_srgb.cpp"
+    "${PDFIUM_ROOT}/core/fxge/dib/cfx_cmyk_to_srgb.h"
+    "${PDFIUM_ROOT}/core/fxge/dib/cfx_dibbase.cpp"
+    "${PDFIUM_ROOT}/core/fxge/dib/cfx_dibbase.h"
+    "${PDFIUM_ROOT}/core/fxge/dib/cfx_dibitmap.cpp"
+    "${PDFIUM_ROOT}/core/fxge/dib/cfx_dibitmap.h"
+    "${PDFIUM_ROOT}/core/fxge/dib/cfx_imagerenderer.cpp"
+    "${PDFIUM_ROOT}/core/fxge/dib/cfx_imagerenderer.h"
+    "${PDFIUM_ROOT}/core/fxge/dib/cfx_imagestretcher.cpp"
+    "${PDFIUM_ROOT}/core/fxge/dib/cfx_imagestretcher.h"
+    "${PDFIUM_ROOT}/core/fxge/dib/cfx_imagetransformer.cpp"
+    "${PDFIUM_ROOT}/core/fxge/dib/cfx_imagetransformer.h"
+    "${PDFIUM_ROOT}/core/fxge/dib/cfx_scanlinecompositor.cpp"
+    "${PDFIUM_ROOT}/core/fxge/dib/cfx_scanlinecompositor.h"
+    "${PDFIUM_ROOT}/core/fxge/dib/cstretchengine.cpp"
+    "${PDFIUM_ROOT}/core/fxge/dib/cstretchengine.h"
+    "${PDFIUM_ROOT}/core/fxge/dib/fx_dib.cpp"
+    "${PDFIUM_ROOT}/core/fxge/dib/fx_dib.h"
+    "${PDFIUM_ROOT}/core/fxge/dib/scanlinecomposer_iface.h"
+    "${PDFIUM_ROOT}/core/fxge/fontdata/chromefontdata/FoxitDingbats.cpp"
+    "${PDFIUM_ROOT}/core/fxge/fontdata/chromefontdata/FoxitFixed.cpp"
+    "${PDFIUM_ROOT}/core/fxge/fontdata/chromefontdata/FoxitFixedBold.cpp"
+    "${PDFIUM_ROOT}/core/fxge/fontdata/chromefontdata/FoxitFixedBoldItalic.cpp"
+    "${PDFIUM_ROOT}/core/fxge/fontdata/chromefontdata/FoxitFixedItalic.cpp"
+    "${PDFIUM_ROOT}/core/fxge/fontdata/chromefontdata/FoxitSans.cpp"
+    "${PDFIUM_ROOT}/core/fxge/fontdata/chromefontdata/FoxitSansBold.cpp"
+    "${PDFIUM_ROOT}/core/fxge/fontdata/chromefontdata/FoxitSansBoldItalic.cpp"
+    "${PDFIUM_ROOT}/core/fxge/fontdata/chromefontdata/FoxitSansItalic.cpp"
+    "${PDFIUM_ROOT}/core/fxge/fontdata/chromefontdata/FoxitSansMM.cpp"
+    "${PDFIUM_ROOT}/core/fxge/fontdata/chromefontdata/FoxitSerif.cpp"
+    "${PDFIUM_ROOT}/core/fxge/fontdata/chromefontdata/FoxitSerifBold.cpp"
+    "${PDFIUM_ROOT}/core/fxge/fontdata/chromefontdata/FoxitSerifBoldItalic.cpp"
+    "${PDFIUM_ROOT}/core/fxge/fontdata/chromefontdata/FoxitSerifItalic.cpp"
+    "${PDFIUM_ROOT}/core/fxge/fontdata/chromefontdata/FoxitSerifMM.cpp"
+    "${PDFIUM_ROOT}/core/fxge/fontdata/chromefontdata/FoxitSymbol.cpp"
+    "${PDFIUM_ROOT}/core/fxge/fontdata/chromefontdata/chromefontdata.h"
+    "${PDFIUM_ROOT}/core/fxge/freetype/fx_freetype.cpp"
+    "${PDFIUM_ROOT}/core/fxge/fx_font.cpp"
+    "${PDFIUM_ROOT}/core/fxge/fx_font.h"
+    "${PDFIUM_ROOT}/core/fxge/fx_freetype.h"
+    "${PDFIUM_ROOT}/core/fxge/render_defines.h"
+    "${PDFIUM_ROOT}/core/fxge/renderdevicedriver_iface.cpp"
+    "${PDFIUM_ROOT}/core/fxge/renderdevicedriver_iface.h"
+    "${PDFIUM_ROOT}/core/fxge/scoped_font_transform.cpp"
+    "${PDFIUM_ROOT}/core/fxge/scoped_font_transform.h"
+    "${PDFIUM_ROOT}/core/fxge/systemfontinfo_iface.h"
+    "${PDFIUM_ROOT}/core/fxge/text_char_pos.cpp"
+    "${PDFIUM_ROOT}/core/fxge/text_char_pos.h"
+    "${PDFIUM_ROOT}/core/fxge/text_glyph_pos.cpp"
+    "${PDFIUM_ROOT}/core/fxge/text_glyph_pos.h"
+)
+add_library(pdfium::core_fxge ALIAS pdfium_core_fxge)
+target_link_libraries(pdfium_core_fxge
+    PRIVATE
+        pdfium::strict_config
+    PUBLIC
+        pdfium::core_fxcrt
+)
+target_compile_definitions(pdfium_core_fxge PRIVATE
+    DEFINE_PS_TABLES_DATA
+)
+if(PDF_ENABLE_XFA)
+    target_sources(pdfium_core_fxge PRIVATE
+        "${PDFIUM_ROOT}/core/fxge/cfx_unicodeencodingex.cpp"
+        "${PDFIUM_ROOT}/core/fxge/cfx_unicodeencodingex.h"
+    )
+endif()
+if(PDF_USE_SKIA OR PDF_USE_SKIA_PATHS)
+    target_sources(pdfium_core_fxge PRIVATE
+        "${PDFIUM_ROOT}/core/fxge/skia/fx_skia_device.cpp"
+    )
+    target_link_libraries(pdfium_core_fxge
+        PUBLIC
+            skia   # FIXME: third party skia?
+    )
+else()
+    target_sources(pdfium_core_fxge PRIVATE
+        "${PDFIUM_ROOT}/core/fxge/agg/fx_agg_driver.cpp"
+        "${PDFIUM_ROOT}/core/fxge/agg/fx_agg_driver.h"
+    )
+    target_link_libraries(pdfium_core_fxge                    PUBLIC
+            pdfium::thirdparty_fx_agg
+    )
+endif()
+if(ANDROID)
+    target_sources(pdfium_core_fxge PRIVATE
+        "${PDFIUM_ROOT}/core/fxge/android/cfpf_skiadevicemodule.cpp"
+        "${PDFIUM_ROOT}/core/fxge/android/cfpf_skiadevicemodule.h"
+        "${PDFIUM_ROOT}/core/fxge/android/cfpf_skiafont.cpp"
+        "${PDFIUM_ROOT}/core/fxge/android/cfpf_skiafont.h"
+        "${PDFIUM_ROOT}/core/fxge/android/cfpf_skiafontmgr.cpp"
+        "${PDFIUM_ROOT}/core/fxge/android/cfpf_skiafontmgr.h"
+        "${PDFIUM_ROOT}/core/fxge/android/cfpf_skiapathfont.cpp"
+        "${PDFIUM_ROOT}/core/fxge/android/cfpf_skiapathfont.h"
+        "${PDFIUM_ROOT}/core/fxge/android/cfx_androidfontinfo.cpp"
+        "${PDFIUM_ROOT}/core/fxge/android/cfx_androidfontinfo.h"
+        "${PDFIUM_ROOT}/core/fxge/android/fx_android_impl.cpp"
+    )
+elseif(LINUX OR CHROMEOS)
+    target_sources(pdfium_core_fxge PRIVATE
+        "${PDFIUM_ROOT}/core/fxge/linux/fx_linux_impl.cpp"
+    )
+elseif(APPLE)
+    target_sources(pdfium_core_fxge PRIVATE
+        "${PDFIUM_ROOT}/core/fxge/apple/fx_apple_impl.cpp"
+        "${PDFIUM_ROOT}/core/fxge/apple/fx_apple_platform.cpp"
+        "${PDFIUM_ROOT}/core/fxge/apple/fx_apple_platform.h"
+        "${PDFIUM_ROOT}/core/fxge/apple/fx_quartz_device.cpp"
+        "${PDFIUM_ROOT}/core/fxge/apple/fx_quartz_device.h"
+    )
+    target_link_libraries(pdfium_core_fxge
+        PUBLIC
+            CoreGraphics.framework  # FIXME: master pdfium target needs to have this too
+    )
+elseif(WIN32)
+    target_sources(pdfium_core_fxge PRIVATE
+        "${PDFIUM_ROOT}/core/fxge/cfx_windowsrenderdevice.cpp"
+        "${PDFIUM_ROOT}/core/fxge/cfx_windowsrenderdevice.h"
+        "${PDFIUM_ROOT}/core/fxge/dib/cfx_dibextractor.cpp"
+        "${PDFIUM_ROOT}/core/fxge/dib/cfx_dibextractor.h"
+        "${PDFIUM_ROOT}/core/fxge/win32/cfx_psrenderer.cpp"
+        "${PDFIUM_ROOT}/core/fxge/win32/cfx_psrenderer.h"
+        "${PDFIUM_ROOT}/core/fxge/win32/cgdi_device_driver.cpp"
+        "${PDFIUM_ROOT}/core/fxge/win32/cgdi_device_driver.h"
+        "${PDFIUM_ROOT}/core/fxge/win32/cgdi_display_driver.cpp"
+        "${PDFIUM_ROOT}/core/fxge/win32/cgdi_display_driver.h"
+        "${PDFIUM_ROOT}/core/fxge/win32/cgdi_plus_ext.cpp"
+        "${PDFIUM_ROOT}/core/fxge/win32/cgdi_plus_ext.h"
+        "${PDFIUM_ROOT}/core/fxge/win32/cgdi_printer_driver.cpp"
+        "${PDFIUM_ROOT}/core/fxge/win32/cgdi_printer_driver.h"
+        "${PDFIUM_ROOT}/core/fxge/win32/cps_printer_driver.cpp"
+        "${PDFIUM_ROOT}/core/fxge/win32/cps_printer_driver.h"
+        "${PDFIUM_ROOT}/core/fxge/win32/cpsoutput.cpp"
+        "${PDFIUM_ROOT}/core/fxge/win32/cpsoutput.h"
+        "${PDFIUM_ROOT}/core/fxge/win32/ctext_only_printer_driver.cpp"
+        "${PDFIUM_ROOT}/core/fxge/win32/ctext_only_printer_driver.h"
+        "${PDFIUM_ROOT}/core/fxge/win32/cwin32_platform.cpp"
+        "${PDFIUM_ROOT}/core/fxge/win32/cwin32_platform.h"
+    )
+endif()

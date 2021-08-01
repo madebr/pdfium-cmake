@@ -1,0 +1,90 @@
+add_library(pdfium_core_fpdfapi_parser OBJECT EXCLUDE_FROM_ALL
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cfdf_document.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cfdf_document.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_array.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_array.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_boolean.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_boolean.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_cross_ref_avail.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_cross_ref_avail.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_cross_ref_table.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_cross_ref_table.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_crypto_handler.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_crypto_handler.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_data_avail.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_data_avail.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_dictionary.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_dictionary.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_document.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_document.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_encryptor.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_encryptor.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_flateencoder.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_flateencoder.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_hint_tables.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_hint_tables.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_indirect_object_holder.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_indirect_object_holder.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_linearized_header.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_linearized_header.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_name.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_name.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_null.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_null.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_number.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_number.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_object.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_object.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_object_avail.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_object_avail.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_object_stream.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_object_stream.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_object_walker.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_object_walker.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_page_object_avail.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_page_object_avail.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_parser.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_parser.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_read_validator.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_read_validator.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_reference.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_reference.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_security_handler.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_security_handler.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_simple_parser.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_simple_parser.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_stream.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_stream.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_stream_acc.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_stream_acc.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_string.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_string.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_syntax_parser.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/cpdf_syntax_parser.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/fpdf_parser_decode.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/fpdf_parser_decode.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/fpdf_parser_utility.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/parser/fpdf_parser_utility.h"
+)
+add_library(pdfium::core_fpdfapi_parser ALIAS pdfium_core_fpdfapi_parser)
+target_link_libraries(pdfium_core_fpdfapi_parser
+    PRIVATE
+        pdfium::strict_config
+    PUBLIC
+        pdfium::constants
+        pdfium::core_fdrm
+        pdfium::core_fxcodec
+        pdfium::core_fxcrt
+)
+if(PDF_ENABLE_XFA)
+    target_sources(pdfium_core_fpdfapi_parser PRIVATE
+        "${PDFIUM_ROOT}/cpdf_seekablemultistream.cpp"
+        "${PDFIUM_ROOT}/cpdf_seekablemultistream.h"
+    )
+endif()
+if(PDF_USE_SKIA OR PDF_USE_SKIA_PATHS)
+    target_link_libraries(pdfium_core_fpdfapi_parser
+        PUBLIC
+            pdfium::core_fxge
+    )
+endif()

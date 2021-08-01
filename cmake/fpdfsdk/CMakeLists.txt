@@ -1,0 +1,96 @@
+add_subdirectory(formfiller)
+add_subdirectory(pwl)
+
+add_library(pdfium_fpdfsdk OBJECT EXCLUDE_FROM_ALL
+    "${PDFIUM_ROOT}/fpdfsdk/cpdfsdk_actionhandler.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/cpdfsdk_actionhandler.h"
+    "${PDFIUM_ROOT}/fpdfsdk/cpdfsdk_annot.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/cpdfsdk_annot.h"
+    "${PDFIUM_ROOT}/fpdfsdk/cpdfsdk_annothandlermgr.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/cpdfsdk_annothandlermgr.h"
+    "${PDFIUM_ROOT}/fpdfsdk/cpdfsdk_annotiteration.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/cpdfsdk_annotiteration.h"
+    "${PDFIUM_ROOT}/fpdfsdk/cpdfsdk_annotiterator.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/cpdfsdk_annotiterator.h"
+    "${PDFIUM_ROOT}/fpdfsdk/cpdfsdk_appstream.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/cpdfsdk_appstream.h"
+    "${PDFIUM_ROOT}/fpdfsdk/cpdfsdk_baannot.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/cpdfsdk_baannot.h"
+    "${PDFIUM_ROOT}/fpdfsdk/cpdfsdk_baannothandler.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/cpdfsdk_baannothandler.h"
+    "${PDFIUM_ROOT}/fpdfsdk/cpdfsdk_customaccess.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/cpdfsdk_customaccess.h"
+    "${PDFIUM_ROOT}/fpdfsdk/cpdfsdk_fieldaction.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/cpdfsdk_fieldaction.h"
+    "${PDFIUM_ROOT}/fpdfsdk/cpdfsdk_filewriteadapter.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/cpdfsdk_filewriteadapter.h"
+    "${PDFIUM_ROOT}/fpdfsdk/cpdfsdk_formfillenvironment.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/cpdfsdk_formfillenvironment.h"
+    "${PDFIUM_ROOT}/fpdfsdk/cpdfsdk_helpers.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/cpdfsdk_helpers.h"
+    "${PDFIUM_ROOT}/fpdfsdk/cpdfsdk_interactiveform.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/cpdfsdk_interactiveform.h"
+    "${PDFIUM_ROOT}/fpdfsdk/cpdfsdk_pageview.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/cpdfsdk_pageview.h"
+    "${PDFIUM_ROOT}/fpdfsdk/cpdfsdk_pauseadapter.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/cpdfsdk_pauseadapter.h"
+    "${PDFIUM_ROOT}/fpdfsdk/cpdfsdk_renderpage.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/cpdfsdk_renderpage.h"
+    "${PDFIUM_ROOT}/fpdfsdk/cpdfsdk_widget.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/cpdfsdk_widget.h"
+    "${PDFIUM_ROOT}/fpdfsdk/cpdfsdk_widgethandler.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/cpdfsdk_widgethandler.h"
+    "${PDFIUM_ROOT}/fpdfsdk/fpdf_annot.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/fpdf_attachment.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/fpdf_catalog.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/fpdf_dataavail.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/fpdf_doc.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/fpdf_editimg.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/fpdf_editpage.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/fpdf_editpath.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/fpdf_edittext.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/fpdf_ext.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/fpdf_flatten.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/fpdf_formfill.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/fpdf_javascript.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/fpdf_ppo.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/fpdf_progressive.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/fpdf_save.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/fpdf_searchex.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/fpdf_signature.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/fpdf_structtree.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/fpdf_sysfontinfo.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/fpdf_text.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/fpdf_thumbnail.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/fpdf_transformpage.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/fpdf_view.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/ipdfsdk_annothandler.h"
+)
+add_library(pdfium::fpdfsdk ALIAS pdfium_fpdfsdk)
+target_link_libraries(pdfium_fpdfsdk
+    PRIVATE
+        pdfium::strict_config
+    PUBLIC
+        pdfium::public_headers
+        pdfium::constants
+        pdfium::core_fpdfapi_edit
+        pdfium::core_fpdfapi_font
+        pdfium::core_fpdfapi_page
+        pdfium::core_fpdfapi_parser
+        pdfium::core_fpdfapi_render
+        pdfium::core_fpdfdoc
+        pdfium::core_fpdftext
+        pdfium::core_fxcrt
+        pdfium::core_fxge
+        pdfium::fxjs
+        pdfium::fpdfsdk_formfiller
+        pdfium::fpdfsdk_pwl
+)
+if(PDF_ENABLE_XFA)
+    target_link_libraries(pdfium_fpdfsdk
+        PUBLIC
+            pdfium::xfa_fxfa
+            pdfium::xfa_ffa_parser
+            pdfium::fpdfxfa
+    )
+endif()

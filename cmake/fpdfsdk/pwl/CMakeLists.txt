@@ -1,0 +1,43 @@
+add_library(pdfium_fpdfsdk_pwl OBJECT EXCLUDE_FROM_ALL
+    "${PDFIUM_ROOT}/fpdfsdk/pwl/cpwl_button.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/pwl/cpwl_button.h"
+    "${PDFIUM_ROOT}/fpdfsdk/pwl/cpwl_caret.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/pwl/cpwl_caret.h"
+    "${PDFIUM_ROOT}/fpdfsdk/pwl/cpwl_cbbutton.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/pwl/cpwl_cbbutton.h"
+    "${PDFIUM_ROOT}/fpdfsdk/pwl/cpwl_cblistbox.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/pwl/cpwl_cblistbox.h"
+    "${PDFIUM_ROOT}/fpdfsdk/pwl/cpwl_combo_box.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/pwl/cpwl_combo_box.h"
+    "${PDFIUM_ROOT}/fpdfsdk/pwl/cpwl_edit.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/pwl/cpwl_edit.h"
+    "${PDFIUM_ROOT}/fpdfsdk/pwl/cpwl_edit_impl.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/pwl/cpwl_edit_impl.h"
+    "${PDFIUM_ROOT}/fpdfsdk/pwl/cpwl_list_box.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/pwl/cpwl_list_box.h"
+    "${PDFIUM_ROOT}/fpdfsdk/pwl/cpwl_list_ctrl.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/pwl/cpwl_list_ctrl.h"
+    "${PDFIUM_ROOT}/fpdfsdk/pwl/cpwl_sbbutton.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/pwl/cpwl_sbbutton.h"
+    "${PDFIUM_ROOT}/fpdfsdk/pwl/cpwl_scroll_bar.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/pwl/cpwl_scroll_bar.h"
+    "${PDFIUM_ROOT}/fpdfsdk/pwl/cpwl_special_button.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/pwl/cpwl_special_button.h"
+    "${PDFIUM_ROOT}/fpdfsdk/pwl/cpwl_wnd.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/pwl/cpwl_wnd.h"
+    "${PDFIUM_ROOT}/fpdfsdk/pwl/ipwl_fillernotify.h"
+    "${PDFIUM_ROOT}/fpdfsdk/pwl/ipwl_systemhandler.h"
+)
+add_library(pdfium::fpdfsdk_pwl ALIAS pdfium_fpdfsdk_pwl)
+target_link_libraries(pdfium_fpdfsdk_pwl
+    PRIVATE
+        pdfium::strict_config
+    PUBLIC
+        pdfium::public_headers
+        pdfium::constants
+        pdfium::core_fpdfapi_font
+        pdfium::core_fpdfapi_render
+        pdfium::core_fpdfdoc
+        pdfium::core_fxcrt
+        pdfium::core_fxge
+)

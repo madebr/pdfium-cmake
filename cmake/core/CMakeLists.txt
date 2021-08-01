@@ -1,0 +1,7 @@
+add_subdirectory(fdrm)
+add_subdirectory(fpdfapi)
+add_subdirectory(fpdfdoc)
+add_subdirectory(fpdftext)
+add_subdirectory(fxcodec)
+add_subdirectory(fxcrt)
+add_subdirectory(fxge)

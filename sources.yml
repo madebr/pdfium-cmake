@@ -1,0 +1,19 @@
+urls:
+  - name: "pdfium"
+    extract_path: ""
+    url_format: "https://pdfium.googlesource.com/pdfium/+archive/{branch}.tar.gz"
+  - name: "trace_event_common"
+    extract_path: "base/trace_event/common"
+    url_format: "https://chromium.googlesource.com/chromium/src/base/trace_event/common/+archive/{branch}.tar.gz"
+  - name: "chromium_build"
+    extract_path: "build"
+    url_format: "https://chromium.googlesource.com/chromium/src/build/+archive/{branch}.tar.gz"
+branches:
+  current:
+    pdfium: "6c8cd905587809a0ff299d1edb34fc85bed4c976"
+    trace_event_common: "ad56859ef8c85cc09a3d8e95dcedadb5109a0af8"
+    chromium_build: "95667421554b672f9330df8efb8148b6c2d00594"
+  master:
+    pdfium: "master"
+    trace_event_common: "master"
+    chromium_build: "master"

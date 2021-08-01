@@ -1,0 +1,127 @@
+add_library(pdfium_core_fxcrt OBJECT EXCLUDE_FROM_ALL
+    "${PDFIUM_ROOT}/core/fxcrt/autonuller.h"
+    "${PDFIUM_ROOT}/core/fxcrt/autorestorer.h"
+    "${PDFIUM_ROOT}/core/fxcrt/byteorder.h"
+    "${PDFIUM_ROOT}/core/fxcrt/bytestring.cpp"
+    "${PDFIUM_ROOT}/core/fxcrt/bytestring.h"
+    "${PDFIUM_ROOT}/core/fxcrt/cfx_binarybuf.cpp"
+    "${PDFIUM_ROOT}/core/fxcrt/cfx_binarybuf.h"
+    "${PDFIUM_ROOT}/core/fxcrt/cfx_bitstream.cpp"
+    "${PDFIUM_ROOT}/core/fxcrt/cfx_bitstream.h"
+    "${PDFIUM_ROOT}/core/fxcrt/cfx_datetime.cpp"
+    "${PDFIUM_ROOT}/core/fxcrt/cfx_datetime.h"
+    "${PDFIUM_ROOT}/core/fxcrt/cfx_fixedbufgrow.h"
+    "${PDFIUM_ROOT}/core/fxcrt/cfx_readonlymemorystream.cpp"
+    "${PDFIUM_ROOT}/core/fxcrt/cfx_readonlymemorystream.h"
+    "${PDFIUM_ROOT}/core/fxcrt/cfx_seekablestreamproxy.cpp"
+    "${PDFIUM_ROOT}/core/fxcrt/cfx_seekablestreamproxy.h"
+    "${PDFIUM_ROOT}/core/fxcrt/cfx_timer.cpp"
+    "${PDFIUM_ROOT}/core/fxcrt/cfx_timer.h"
+    "${PDFIUM_ROOT}/core/fxcrt/cfx_utf8decoder.cpp"
+    "${PDFIUM_ROOT}/core/fxcrt/cfx_utf8decoder.h"
+    "${PDFIUM_ROOT}/core/fxcrt/cfx_utf8encoder.cpp"
+    "${PDFIUM_ROOT}/core/fxcrt/cfx_utf8encoder.h"
+    "${PDFIUM_ROOT}/core/fxcrt/cfx_widetextbuf.cpp"
+    "${PDFIUM_ROOT}/core/fxcrt/cfx_widetextbuf.h"
+    "${PDFIUM_ROOT}/core/fxcrt/fileaccess_iface.h"
+    "${PDFIUM_ROOT}/core/fxcrt/fx_bidi.cpp"
+    "${PDFIUM_ROOT}/core/fxcrt/fx_bidi.h"
+    "${PDFIUM_ROOT}/core/fxcrt/fx_codepage.cpp"
+    "${PDFIUM_ROOT}/core/fxcrt/fx_codepage.h"
+    "${PDFIUM_ROOT}/core/fxcrt/fx_codepage_forward.h"
+    "${PDFIUM_ROOT}/core/fxcrt/fx_coordinates.cpp"
+    "${PDFIUM_ROOT}/core/fxcrt/fx_bidi.cpp"
+    "${PDFIUM_ROOT}/core/fxcrt/fx_bidi.h"
+    "${PDFIUM_ROOT}/core/fxcrt/fx_codepage.cpp"
+    "${PDFIUM_ROOT}/core/fxcrt/fx_codepage.h"
+    "${PDFIUM_ROOT}/core/fxcrt/fx_codepage_forward.h"
+    "${PDFIUM_ROOT}/core/fxcrt/fx_coordinates.cpp"
+    "${PDFIUM_ROOT}/core/fxcrt/fx_coordinates.h"
+    "${PDFIUM_ROOT}/core/fxcrt/fx_extension.cpp"
+    "${PDFIUM_ROOT}/core/fxcrt/fx_extension.h"
+    "${PDFIUM_ROOT}/core/fxcrt/fx_folder.h"
+    "${PDFIUM_ROOT}/core/fxcrt/fx_memory.cpp"
+    "${PDFIUM_ROOT}/core/fxcrt/fx_memory.h"
+    "${PDFIUM_ROOT}/core/fxcrt/fx_memory_wrappers.h"
+    "${PDFIUM_ROOT}/core/fxcrt/fx_number.cpp"
+    "${PDFIUM_ROOT}/core/fxcrt/fx_number.h"
+    "${PDFIUM_ROOT}/core/fxcrt/fx_random.cpp"
+    "${PDFIUM_ROOT}/core/fxcrt/fx_random.h"
+    "${PDFIUM_ROOT}/core/fxcrt/fx_safe_types.h"
+    "${PDFIUM_ROOT}/core/fxcrt/fx_stream.cpp"
+    "${PDFIUM_ROOT}/core/fxcrt/fx_stream.h"
+    "${PDFIUM_ROOT}/core/fxcrt/fx_string.cpp"
+    "${PDFIUM_ROOT}/core/fxcrt/fx_string.h"
+    "${PDFIUM_ROOT}/core/fxcrt/fx_system.cpp"
+    "${PDFIUM_ROOT}/core/fxcrt/fx_system.h"
+    "${PDFIUM_ROOT}/core/fxcrt/fx_types.h"
+    "${PDFIUM_ROOT}/core/fxcrt/fx_unicode.cpp"
+    "${PDFIUM_ROOT}/core/fxcrt/fx_unicode.h"
+    "${PDFIUM_ROOT}/core/fxcrt/maybe_owned.h"
+    "${PDFIUM_ROOT}/core/fxcrt/observed_ptr.cpp"
+    "${PDFIUM_ROOT}/core/fxcrt/observed_ptr.h"
+    "${PDFIUM_ROOT}/core/fxcrt/pauseindicator_iface.h"
+    "${PDFIUM_ROOT}/core/fxcrt/retain_ptr.h"
+    "${PDFIUM_ROOT}/core/fxcrt/retained_tree_node.h"
+    "${PDFIUM_ROOT}/core/fxcrt/scoped_set_insertion.h"
+    "${PDFIUM_ROOT}/core/fxcrt/shared_copy_on_write.h"
+    "${PDFIUM_ROOT}/core/fxcrt/span_util.h"
+    "${PDFIUM_ROOT}/core/fxcrt/stl_util.h"
+    "${PDFIUM_ROOT}/core/fxcrt/string_data_template.cpp"
+    "${PDFIUM_ROOT}/core/fxcrt/string_data_template.h"
+    "${PDFIUM_ROOT}/core/fxcrt/string_pool_template.h"
+    "${PDFIUM_ROOT}/core/fxcrt/string_view_template.h"
+    "${PDFIUM_ROOT}/core/fxcrt/tree_node.h"
+    "${PDFIUM_ROOT}/core/fxcrt/unowned_ptr.h"
+    "${PDFIUM_ROOT}/core/fxcrt/weak_ptr.h"
+    "${PDFIUM_ROOT}/core/fxcrt/widestring.cpp"
+    "${PDFIUM_ROOT}/core/fxcrt/widestring.h"
+    "${PDFIUM_ROOT}/core/fxcrt/xml/cfx_xmlchardata.cpp"
+    "${PDFIUM_ROOT}/core/fxcrt/xml/cfx_xmlchardata.h"
+    "${PDFIUM_ROOT}/core/fxcrt/xml/cfx_xmldocument.cpp"
+    "${PDFIUM_ROOT}/core/fxcrt/xml/cfx_xmldocument.h"
+    "${PDFIUM_ROOT}/core/fxcrt/xml/cfx_xmlelement.cpp"
+    "${PDFIUM_ROOT}/core/fxcrt/xml/cfx_xmlelement.h"
+    "${PDFIUM_ROOT}/core/fxcrt/xml/cfx_xmlinstruction.cpp"
+    "${PDFIUM_ROOT}/core/fxcrt/xml/cfx_xmlinstruction.h"
+    "${PDFIUM_ROOT}/core/fxcrt/xml/cfx_xmlnode.cpp"
+    "${PDFIUM_ROOT}/core/fxcrt/xml/cfx_xmlnode.h"
+    "${PDFIUM_ROOT}/core/fxcrt/xml/cfx_xmlparser.cpp"
+    "${PDFIUM_ROOT}/core/fxcrt/xml/cfx_xmlparser.h"
+    "${PDFIUM_ROOT}/core/fxcrt/xml/cfx_xmltext.cpp"
+    "${PDFIUM_ROOT}/core/fxcrt/xml/cfx_xmltext.h"
+)
+add_library(pdfium::core_fxcrt ALIAS pdfium_core_fxcrt)
+find_package(ICU REQUIRED)
+target_compile_definitions(pdfium_core_fxcrt
+    PUBLIC
+        USE_SYSTEM_ICUUC
+)
+target_link_libraries(pdfium_core_fxcrt
+    PRIVATE
+        pdfium::strict_config
+    PUBLIC
+        pdfium::thirdparty_pdfium_base
+        pdfium::thirdparty_freetype
+        ICU::uc
+)
+if(POSIX OR FUCHSIA)
+    target_sources(pdfium_core_fxcrt PRIVATE
+        "${PDFIUM_ROOT}/core/fxcrt/cfx_fileaccess_posix.cpp"
+        "${PDFIUM_ROOT}/core/fxcrt/cfx_fileaccess_posix.h"
+        "${PDFIUM_ROOT}/core/fxcrt/fx_folder_posix.cpp"
+    )
+endif()
+if(WIN32)
+    target_sources(pdfium_core_fxcrt PRIVATE
+        "${PDFIUM_ROOT}/core/fxcrt/cfx_fileaccess_windows.cpp"
+        "${PDFIUM_ROOT}/core/fxcrt/cfx_fileaccess_windows.h"
+        "${PDFIUM_ROOT}/core/fxcrt/fx_folder_windows.cpp"
+    )
+endif()
+if(PDF_ENABLE_XFA)
+    target_sources(pdfium_core_fxcrt PRIVATE
+        "${PDFIUM_ROOT}/core/fxcrt/cfx_memorystream.cpp"
+        "${PDFIUM_ROOT}/core/fxcrt/cfx_memorystream.h"
+    )
+endif()

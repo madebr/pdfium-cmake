@@ -1,0 +1,45 @@
+add_library(pdfium_core_fpdfapi_font OBJECT EXCLUDE_FROM_ALL
+    "${PDFIUM_ROOT}/core/fpdfapi/font/cfx_cttgsubtable.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/font/cfx_cttgsubtable.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/font/cfx_stockfontarray.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/font/cfx_stockfontarray.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/font/cpdf_cid2unicodemap.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/font/cpdf_cid2unicodemap.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/font/cpdf_cidfont.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/font/cpdf_cidfont.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/font/cpdf_cmap.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/font/cpdf_cmap.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/font/cpdf_cmapmanager.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/font/cpdf_cmapmanager.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/font/cpdf_cmapparser.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/font/cpdf_cmapparser.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/font/cpdf_font.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/font/cpdf_font.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/font/cpdf_fontencoding.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/font/cpdf_fontencoding.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/font/cpdf_fontglobals.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/font/cpdf_fontglobals.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/font/cpdf_simplefont.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/font/cpdf_simplefont.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/font/cpdf_tounicodemap.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/font/cpdf_tounicodemap.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/font/cpdf_truetypefont.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/font/cpdf_truetypefont.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/font/cpdf_type1font.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/font/cpdf_type1font.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/font/cpdf_type3char.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/font/cpdf_type3char.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/font/cpdf_type3font.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/font/cpdf_type3font.h"
+)
+add_library(pdfium::core_fpdfapi_font ALIAS pdfium_core_fpdfapi_font)
+target_link_libraries(pdfium_core_fpdfapi_font
+    PRIVATE
+        pdfium::strict_config
+        $<$<BOOL:${APPLE}>:CoreFoundation.framework>
+    PUBLIC
+        pdfium::core_fxcrt
+        pdfium::core_fxge
+        pdfium::core_fpdfapi_cmaps
+        pdfium::core_fpdfapi_parser
+)

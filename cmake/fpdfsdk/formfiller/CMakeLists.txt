@@ -1,0 +1,36 @@
+add_library(pdfium_fpdfsdk_formfiller OBJECT EXCLUDE_FROM_ALL
+    "${PDFIUM_ROOT}/fpdfsdk/formfiller/cffl_button.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/formfiller/cffl_button.h"
+    "${PDFIUM_ROOT}/fpdfsdk/formfiller/cffl_checkbox.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/formfiller/cffl_checkbox.h"
+    "${PDFIUM_ROOT}/fpdfsdk/formfiller/cffl_combobox.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/formfiller/cffl_combobox.h"
+    "${PDFIUM_ROOT}/fpdfsdk/formfiller/cffl_formfield.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/formfiller/cffl_formfield.h"
+    "${PDFIUM_ROOT}/fpdfsdk/formfiller/cffl_interactiveformfiller.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/formfiller/cffl_interactiveformfiller.h"
+    "${PDFIUM_ROOT}/fpdfsdk/formfiller/cffl_listbox.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/formfiller/cffl_listbox.h"
+    "${PDFIUM_ROOT}/fpdfsdk/formfiller/cffl_privatedata.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/formfiller/cffl_privatedata.h"
+    "${PDFIUM_ROOT}/fpdfsdk/formfiller/cffl_pushbutton.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/formfiller/cffl_pushbutton.h"
+    "${PDFIUM_ROOT}/fpdfsdk/formfiller/cffl_radiobutton.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/formfiller/cffl_radiobutton.h"
+    "${PDFIUM_ROOT}/fpdfsdk/formfiller/cffl_textfield.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/formfiller/cffl_textfield.h"
+    "${PDFIUM_ROOT}/fpdfsdk/formfiller/cffl_textobject.cpp"
+)
+add_library(pdfium::fpdfsdk_formfiller ALIAS pdfium_fpdfsdk_formfiller)
+target_link_libraries(pdfium_fpdfsdk_formfiller
+    PRIVATE
+        pdfium::strict_config
+    PUBLIC
+        pdfium::public_headers
+        pdfium::constants
+        pdfium::core_fpdfapi_page
+        pdfium::core_fpdfdoc
+        pdfium::core_fxcrt
+        pdfium::core_fxge
+        pdfium::fpdfsdk_pwl
+)

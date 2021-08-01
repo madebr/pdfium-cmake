@@ -1,0 +1,57 @@
+add_library(pdfium_core_fpdfapi_render OBJECT EXCLUDE_FROM_ALL
+    "${PDFIUM_ROOT}/core/fpdfapi/render/charposlist.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/render/charposlist.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/render/cpdf_devicebuffer.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/render/cpdf_devicebuffer.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/render/cpdf_docrenderdata.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/render/cpdf_docrenderdata.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/render/cpdf_imagecacheentry.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/render/cpdf_imagecacheentry.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/render/cpdf_imageloader.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/render/cpdf_imageloader.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/render/cpdf_imagerenderer.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/render/cpdf_imagerenderer.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/render/cpdf_pagerendercache.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/render/cpdf_pagerendercache.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/render/cpdf_pagerendercontext.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/render/cpdf_pagerendercontext.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/render/cpdf_progressiverenderer.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/render/cpdf_progressiverenderer.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/render/cpdf_rendercontext.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/render/cpdf_rendercontext.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/render/cpdf_renderoptions.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/render/cpdf_renderoptions.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/render/cpdf_rendershading.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/render/cpdf_rendershading.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/render/cpdf_renderstatus.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/render/cpdf_renderstatus.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/render/cpdf_rendertiling.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/render/cpdf_rendertiling.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/render/cpdf_scaledrenderbuffer.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/render/cpdf_scaledrenderbuffer.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/render/cpdf_textrenderer.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/render/cpdf_textrenderer.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/render/cpdf_type3cache.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/render/cpdf_type3cache.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/render/cpdf_type3glyphmap.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/render/cpdf_type3glyphmap.h"
+)
+add_library(pdfium::core_fpdfapi_render ALIAS pdfium_core_fpdfapi_render)
+target_link_libraries(pdfium_core_fpdfapi_render
+    PRIVATE
+        pdfium::strict_config
+    PUBLIC
+        pdfium::constants
+        pdfium::core_fxcodec
+        pdfium::core_fxcrt
+        pdfium::core_fxge
+        pdfium::core_fpdfapi_font
+        pdfium::core_fpdfapi_page
+        pdfium::core_fpdfapi_parser
+)
+if(WIN32)
+    target_sources(pdfium_core_fpdfapi_render PRIVATE
+        "${PDFIUM_ROOT}/core/fpdfapi/render/cpdf_windowsrenderdevice.cpp"
+        "${PDFIUM_ROOT}/core/fpdfapi/render/cpdf_windowsrenderdevice.h"
+    )
+endif()

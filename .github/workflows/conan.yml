@@ -1,0 +1,38 @@
+name: CI
+on:
+  pull_request:
+  push:
+  release:
+    types: published
+
+jobs:
+  build-cmake:
+    strategy:
+      matrix:
+        include:
+          - os: 'ubuntu-latest'
+            branch: 'current'
+          - os: 'windows-latest'
+            branch: 'current'
+          - os: 'macos-latest'
+            branch: 'current'
+    runs-on: '${{ matrix.os }}'
+    steps:
+      - uses: actions/checkout@v2
+      - name: 'Install python dependencies'
+        run: |
+          python -m pip install -r requirements.txt
+          python -m pip install conan
+      - name: 'Download pdfium sources'
+        run: |
+          python download_pdfium.py --branch "${{ matrix.branch }}" --destination "pdfium"
+          sudo apt-get install libfreetype-dev libicu-dev libjpeg-dev libopenjp2-7-dev libpng-dev libtiff-dev zlib1g-dev
+      - name: 'Initialize conan'
+        run: |
+          conan config init
+      - name: 'Configure, build and install static pdfium'
+        run: |
+          conan create . pdfium/${{ matrix.branch }}@ -o pdfium:shared=False
+      - name: 'Configure, build and install shared pdfium'
+        run: |
+          conan create . pdfium/${{ matrix.branch }}@ -o pdfium:shared=True

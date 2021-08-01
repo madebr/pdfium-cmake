@@ -1,0 +1,6 @@
+add_subdirectory(cmaps)
+add_subdirectory(edit)
+add_subdirectory(font)
+add_subdirectory(page)
+add_subdirectory(parser)
+add_subdirectory(render)
