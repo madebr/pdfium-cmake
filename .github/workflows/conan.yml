@@ -15,9 +15,8 @@ jobs:
       matrix: ${{ steps.calc-build-matrix.outputs.matrix }}
     steps:
       - name: 'Calculate build matrix'
-        id: calc-build-matrix
-        with:
-          entrypoint: python
+        id: 'calc-build-matrix'
+        shell: python
         run: |
           import itertools
           import json
