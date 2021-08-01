@@ -1,0 +1,24 @@
+name: Diff
+on:
+  pull_request:
+  push:
+  release:
+    types:
+      - published
+  schedule:
+    - cron: '0 0 1,15 * *'  # Run approximately every 2 weeks
+
+jobs:
+  run-pdfium_diff:
+    runs-on: 'ubuntu-latest'
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      - name: 'Install python dependencies'
+        run: |
+          python -m pip install -r requirements.txt
+      - name: 'View diff in pdfium build system between current and master'
+        run: |
+          python pdfium_diff.py
