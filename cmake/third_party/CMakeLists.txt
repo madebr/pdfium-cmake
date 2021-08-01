@@ -103,8 +103,9 @@ target_compile_definitions(pdfium_thirdparty_lcms2 INTERFACE USE_SYSTEM_LCMS2)
 
 add_library(pdfium_thirdparty_libopenjpeg2 INTERFACE)
 add_library(pdfium::thirdparty_libopenjpeg2 ALIAS pdfium_thirdparty_libopenjpeg2)
-find_package(OpenJPEG)
-target_link_libraries(pdfium_thirdparty_libopenjpeg2 INTERFACE openjp2)
+pkg_check_modules(LIBOPENJP2 IMPORTED_TARGET libopenjp2)
+# FIXME: use find_package(OpenJPEG) + openjp2 target, needs https://github.com/uclouvain/openjpeg/pull/1370
+target_link_libraries(pdfium_thirdparty_libopenjpeg2 INTERFACE PkgConfig::LIBOPENJP2)
 target_compile_definitions(pdfium_thirdparty_libopenjpeg2 INTERFACE USE_SYSTEM_LIBOPENJPEG2)
 
 add_library(pdfium_thirdparty_libpng INTERFACE)
