@@ -30,7 +30,6 @@ jobs:
       - name: 'Download pdfium sources'
         run: |
           python download_pdfium.py --branch "${{ matrix.branch }}" --destination "pdfium"
-          sudo apt-get install libfreetype-dev libicu-dev libjpeg-dev libopenjp2-7-dev libpng-dev libtiff-dev zlib1g-dev
       - name: 'Initialize conan'
         run: |
           conan config init

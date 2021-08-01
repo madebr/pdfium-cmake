@@ -92,7 +92,7 @@ add_library(pdfium_core_fxcrt OBJECT EXCLUDE_FROM_ALL
     "${PDFIUM_ROOT}/core/fxcrt/xml/cfx_xmltext.h"
 )
 add_library(pdfium::core_fxcrt ALIAS pdfium_core_fxcrt)
-find_package(ICU REQUIRED)
+find_package(ICU REQUIRED COMPONENTS uc)
 target_compile_definitions(pdfium_core_fxcrt
     PUBLIC
         USE_SYSTEM_ICUUC
