@@ -28,7 +28,5 @@ Patches for testing + running on other platforms are welcome.
 - Pdfium is built in static and shared configuration
 
 Only the default options are currently tested.
-Code for building pdfium sources making use of skia/v8 is implemented but not working. 
+Code for building pdfium sources making use of skia/v8 is implemented but not working.
 Patches are welcome.
-
-## How can 
