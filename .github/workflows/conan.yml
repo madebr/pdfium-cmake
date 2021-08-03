@@ -30,7 +30,7 @@ jobs:
           branch_list = ["current"]
           if "${{ github.event_name }}" != "release":
             branch_list.append("master")
-          matrix = [{"runs-os": os, "conan-profile": profile, "branch": branch} for (os, profile), branch in itertools.product(os_profile_list, branch_list)]
+          matrix = [{"os": os, "conan-profile": profile, "branch": branch} for (os, profile), branch in itertools.product(os_profile_list, branch_list)]
           pprint.pprint(matrix)
           print("::set-output name=matrix::{}".format(json.dumps(matrix)))
   build-conan:
