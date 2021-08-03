@@ -16,28 +16,30 @@ def git_diff(sources, module):
         print("module:", module)
         print("-"*40)
         print("Cloning git...")
-        subprocess.check_call([
+        out = subprocess.check_output([
             "git", "clone",
             "-b", sources["branches"]["master"][module],
             sources["urls"][module]["git_url"],
             os.path.join(tmpdir, module),
-
         ])
+        print(out.decode().strip())
         print("-"*40)
         print("Master git hash:")
-        subprocess.check_call([
+        hash = subprocess.check_output([
             "git", "rev-parse", "HEAD",
         ], cwd=os.path.join(tmpdir, module))
+        print(hash.decode().strip())
         print("(current is:", sources["branches"]["current"][module], ")")
         print("-"*40)
         print("git diff:")
-        subprocess.call([
+        out = subprocess.run([
             "git", "diff",
             "{}..{}".format(
                 sources["branches"]["current"][module],
                 sources["branches"]["master"][module]),
             "--", "*.gn"
-        ], cwd=os.path.join(tmpdir, module))
+        ], cwd=os.path.join(tmpdir, module), stdout=subprocess.PIPE).stdout
+        print(out.decode().strip())
         print("="*40)
 
 def main():
