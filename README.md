@@ -18,8 +18,13 @@ Third party dependencies are provided by system packages, instead of vendored li
 ### Tested platforms
 
 The cmake scripts are tested by CI on:
-- Linux
-- Windows
+- Linux:
+  - ubuntu packages
+  - conan packages
+- Macos:
+  - conan packages
+- Windows:
+  - conan packages
 
 Patches for testing + running on other platforms are welcome.
 

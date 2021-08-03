@@ -14,7 +14,7 @@ def main():
 
     with tempfile.TemporaryDirectory() as tmpdir:
         subprocess.check_call(["git", "clone", sources["urls"][0]["git_url"], os.path.join(tmpdir, "pdfium")])
-        subprocess.check_call(["git", "diff", "{}..{}".format(sources["branches"]["current"]["pdfium"], sources["branches"]["master"]["pdfium"]), "--", "*.gn"], cwd=os.path.join(tmpdir, "pdfium"))
+        subprocess.call(["git", "diff", "{}..{}".format(sources["branches"]["current"]["pdfium"], sources["branches"]["master"]["pdfium"]), "--", "*.gn"], cwd=os.path.join(tmpdir, "pdfium"))
 
 if __name__ == "__main__":
     main()
