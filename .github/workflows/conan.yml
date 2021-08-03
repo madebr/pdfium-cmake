@@ -6,7 +6,7 @@ on:
     types:
       - published
   schedule:
-    - cron: '0 0 1,15 * *'  # Run approximately every 2 weeks
+    - cron: '0 0 1,5,10,15,20,25,30 * *'  # Run approximately every 5 days
 
 jobs:
   calculate-matrix:
@@ -20,11 +20,13 @@ jobs:
         run: |
           import itertools
           import json
+          import pprint
           os_list = ["ubuntu-latest", "windows-latest", "macos-latest"]
           branch_list = ["current"]
           if "${{ github.event_name }}" != "release":
             branch_list.append("master")
           matrix = [{"os": os, "branch": branch} for os, branch in itertools.product(os_list, branch_list)]
+          pprint.pprint(matrix)
           print("::set-output name=matrix::{}".format(json.dumps(matrix)))
   build-conan:
     needs: 'calculate-matrix'
