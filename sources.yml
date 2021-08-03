@@ -1,21 +1,25 @@
+modules:
+  - "pdfium"
+  - "trace_event_common"
+  - "chromium_build"
 urls:
-  - name: "pdfium"
+  pdfium:
     extract_path: ""
     url_format: "https://pdfium.googlesource.com/pdfium/+archive/{branch}.tar.gz"
     git_url: "https://pdfium.googlesource.com/pdfium"
-  - name: "trace_event_common"
+  trace_event_common:
     extract_path: "base/trace_event/common"
     url_format: "https://chromium.googlesource.com/chromium/src/base/trace_event/common/+archive/{branch}.tar.gz"
     git_url: "https://chromium.googlesource.com/chromium/src/base/trace_event/common"
-  - name: "chromium_build"
+  chromium_build:
     extract_path: "build"
     url_format: "https://chromium.googlesource.com/chromium/src/build/+archive/{branch}.tar.gz"
     git_url: "https://chromium.googlesource.com/chromium/src/build"
 branches:
   current:
-    pdfium: "6c8cd905587809a0ff299d1edb34fc85bed4c976"
-    trace_event_common: "ad56859ef8c85cc09a3d8e95dcedadb5109a0af8"
-    chromium_build: "95667421554b672f9330df8efb8148b6c2d00594"
+    pdfium: "fdbfb3c44434f3de59d2e23a8dbfeefe52608167"
+    trace_event_common: "1169114f57e5045401e2d3793b7f10f3655b46ea"
+    chromium_build: "9d173680cfe9eb6ef32283e7769810dfd18e2c18"
   master:
     pdfium: "main"
     trace_event_common: "main"

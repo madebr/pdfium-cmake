@@ -47,7 +47,7 @@ jobs:
           python -m pip install conan
       - name: 'Download pdfium sources'
         run: |
-          python download_pdfium.py --branch "${{ matrix.branch }}" --destination "pdfium"
+          python pdfium_download.py --branch "${{ matrix.branch }}" --destination "pdfium"
       - name: 'Initialize conan'
         run: |
           conan config init

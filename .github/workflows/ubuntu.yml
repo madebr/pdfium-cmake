@@ -23,7 +23,7 @@ jobs:
           python -m pip install -r requirements.txt
       - name: 'Download pdfium sources'
         run: |
-          python download_pdfium.py --branch "${{ matrix.branch }}" --destination "pdfium"
+          python pdfium_download.py --branch "${{ matrix.branch }}" --destination "pdfium"
       - name: 'Download Ubuntu packages'
         run: |
           sudo apt-get install libfreetype-dev libicu-dev libjpeg-dev libopenjp2-7-dev libpng-dev libtiff-dev zlib1g-dev

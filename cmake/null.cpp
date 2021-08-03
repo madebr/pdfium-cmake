@@ -1,1 +1,1 @@
-# intentionally blank source
+/* intentionally blank source */

@@ -24,14 +24,13 @@ def main():
 
     branches = sources["branches"][ns.branch]
 
-    for source in sources["urls"]:
-        name = source["name"]
-        url = source["url_format"].format(branch=branches[name])
+    for name in sources["modules"]:
+        url = sources["urls"][name]["url_format"].format(branch=branches[name])
         print(f"Downloading {name} from {url}...")
 
         response = requests.get(url, stream=True)
         file = tarfile.open(fileobj=response.raw, mode="r|gz")
-        file.extractall(path=os.path.join(destination, source["extract_path"]))
+        file.extractall(path=os.path.join(destination, sources["urls"][name]["extract_path"]))
 
 
 if __name__ == "__main__":
