@@ -46,7 +46,7 @@ jobs:
           python pdfium_download.py --branch "${{ matrix.branch }}" --destination "pdfium"
       - name: 'Configure, build and install static pdfium'
         run: |
-          cmake -S cmake -B build_static
+          cmake -S cmake -B build_static \
             -DCMAKE_TOOLCHAIN_FILE=$ANDROID_NDK_HOME/build/cmake/android.toolchain.cmake \
             -DANDROID_ABI=${{ matrix.android-abi }} \
             -DANDROID_NATIVE_API_LEVEL=${{ matrix.api-level }} \
