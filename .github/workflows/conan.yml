@@ -58,6 +58,7 @@ jobs:
         run: |
           conan config init
       - name: 'Configure, build and install static pdfium'
+        shell: bash
         run: |
           conan install . pdfium/${{ matrix.branch }} -pr:h ${{ matrix.conan-profile }} -pr:b default \
             -o pdfium:shared=False --build missing \
@@ -66,6 +67,7 @@ jobs:
           conan build   . -if static/build -sf static/source -bf static/build -pf static/package
           conan package . -if static/build -sf static/source -bf static/build -pf static/package
       - name: 'Configure, build and install shared pdfium'
+        shell: bash
         run: |
           conan install . pdfium/${{ matrix.branch }} -pr:h ${{ matrix.conan-profile }} -pr:b default \
             -o pdfium:shared=False --build missing \
