@@ -2,9 +2,9 @@ name: Ubuntu
 on:
   pull_request:
   push:
+    branches: master
   release:
-    types:
-      - published
+    types: [published]
 
 jobs:
   build-cmake:
@@ -29,11 +29,17 @@ jobs:
           sudo apt-get install libfreetype-dev libicu-dev libjpeg-dev libopenjp2-7-dev libpng-dev libtiff-dev zlib1g-dev
       - name: 'Configure, build and install static pdfium'
         run: |
-          cmake -S cmake -B build_static -DPDFIUM_ROOT="${{ github.workspace }}/pdfium" -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX=staticprefix
+          cmake -S cmake -B build_static \
+            -DPDFIUM_ROOT="${{ github.workspace }}/pdfium" \
+            -DCMAKE_INSTALL_PREFIX=staticprefix \
+            -DBUILD_SHARED_LIBS=OFF
           cmake --build build_static --parallel
           cmake --build build_static --target install
       - name: 'Configure, build and install shared pdfium'
         run: |
-          cmake -S cmake -B build_shared -DPDFIUM_ROOT="${{ github.workspace }}/pdfium" -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX=sharedprefix
+          cmake -S cmake -B build_shared \
+            -DPDFIUM_ROOT="${{ github.workspace }}/pdfium" \
+            -DCMAKE_INSTALL_PREFIX=sharedprefix \
+            -DBUILD_SHARED_LIBS=ON
           cmake --build build_shared --parallel
           cmake --build build_shared --target install

@@ -2,9 +2,9 @@ name: Conan
 on:
   pull_request:
   push:
+    branches: [master]
   release:
-    types:
-      - published
+    types: [published]
   schedule:
     - cron: '0 0 1,5,10,15,20,25,30 * *'  # Run approximately every 5 days
 
