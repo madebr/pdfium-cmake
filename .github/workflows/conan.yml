@@ -21,11 +21,16 @@ jobs:
           import itertools
           import json
           import pprint
-          os_list = ["ubuntu-latest", "windows-latest", "macos-latest"]
+          os_profile_list = [
+            ("ubuntu-latest",   "default"),
+            ("windows-latest",  "default"),
+            ("macos-latest",    "default"),
+            ("ubuntu-latest",   "${{ github.workspace }}/conan/profiles/android22-armv8"),
+          ]
           branch_list = ["current"]
           if "${{ github.event_name }}" != "release":
             branch_list.append("master")
-          matrix = [{"os": os, "branch": branch} for os, branch in itertools.product(os_list, branch_list)]
+          matrix = [{"runs-os": os, "conan-profile": profile, "branch": branch} for (os, profile), branch in itertools.product(os_profile_list, branch_list)]
           pprint.pprint(matrix)
           print("::set-output name=matrix::{}".format(json.dumps(matrix)))
   build-conan:
@@ -34,6 +39,7 @@ jobs:
       matrix:
         include: ${{ fromJSON(needs.calculate-matrix.outputs.matrix) }}
     runs-on: '${{ matrix.os }}'
+    continue-on-error: ${{ matrix.branch != 'current' }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
@@ -56,4 +62,6 @@ jobs:
           conan create . pdfium/${{ matrix.branch }}@ -o pdfium:shared=False
       - name: 'Configure, build and install shared pdfium'
         run: |
-          conan create . pdfium/${{ matrix.branch }}@ -o pdfium:shared=True
+          conan install . pdfium/${{ matrix.branch }} -if build -pr:h ${{ matrix.conan-profile }} -pr:b default
+          conan build . -if build -bf build -pf package
+          conan package . -if build -bf build -pf package
