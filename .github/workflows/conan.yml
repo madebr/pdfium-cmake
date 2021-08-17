@@ -2,9 +2,9 @@ name: Conan
 on:
   pull_request:
   push:
+    branches: [master]
   release:
-    types:
-      - published
+    types: [published]
   schedule:
     - cron: '0 0 1,5,10,15,20,25,30 * *'  # Run approximately every 5 days
 
@@ -21,11 +21,16 @@ jobs:
           import itertools
           import json
           import pprint
-          os_list = ["ubuntu-latest", "windows-latest", "macos-latest"]
+          os_profile_list = [
+            ("ubuntu-latest",   "default"),
+            ("windows-latest",  "default"),
+            ("macos-latest",    "default"),
+            ("ubuntu-latest",   "${{ github.workspace }}/conan/profiles/android22-armv8"),
+          ]
           branch_list = ["current"]
           if "${{ github.event_name }}" != "release":
             branch_list.append("master")
-          matrix = [{"os": os, "branch": branch} for os, branch in itertools.product(os_list, branch_list)]
+          matrix = [{"os": os, "conan-profile": profile, "branch": branch} for (os, profile), branch in itertools.product(os_profile_list, branch_list)]
           pprint.pprint(matrix)
           print("::set-output name=matrix::{}".format(json.dumps(matrix)))
   build-conan:
@@ -34,6 +39,7 @@ jobs:
       matrix:
         include: ${{ fromJSON(needs.calculate-matrix.outputs.matrix) }}
     runs-on: '${{ matrix.os }}'
+    continue-on-error: ${{ matrix.branch != 'current' }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
@@ -51,9 +57,22 @@ jobs:
       - name: 'Initialize conan'
         run: |
           conan config init
+          conan config set log.print_run_commands=True
       - name: 'Configure, build and install static pdfium'
+        shell: bash
         run: |
-          conan create . pdfium/${{ matrix.branch }}@ -o pdfium:shared=False
+          conan install . pdfium/${{ matrix.branch }} -pr:h ${{ matrix.conan-profile }} -pr:b default \
+            -o pdfium:shared=False --build missing \
+                          -if static/build
+          conan source  . -if static/build -sf static/source
+          conan build   . -if static/build -sf static/source -bf static/build -pf static/package
+          conan package . -if static/build -sf static/source -bf static/build -pf static/package
       - name: 'Configure, build and install shared pdfium'
+        shell: bash
         run: |
-          conan create . pdfium/${{ matrix.branch }}@ -o pdfium:shared=True
+          conan install . pdfium/${{ matrix.branch }} -pr:h ${{ matrix.conan-profile }} -pr:b default \
+            -o pdfium:shared=True --build missing \
+                          -if shared/build
+          conan source  . -if shared/build -sf shared/source
+          conan build   . -if shared/build -sf shared/source -bf shared/build -pf shared/package
+          conan package . -if shared/build -sf shared/source -bf shared/build -pf shared/package
