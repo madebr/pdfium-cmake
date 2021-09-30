@@ -11,7 +11,7 @@ class PdfiumConan(ConanFile):
     name = "pdfium"
     description = "PDF generation and rendering library."
     license = "BSD-3-Clause"
-    topics = ("conan", "pdfium", "generate", "generation", "rendering", "pdf", "document", "print")
+    topics = ("pdf", "document", "print", "generate", "generation", "rendering")
     homepage = "https://opensource.google/projects/pdfium"
     url = "https://github.com/conan-io/conan-center-index"
 
@@ -73,17 +73,18 @@ class PdfiumConan(ConanFile):
         shutil.copytree("cmake", os.path.join(self.export_sources_folder, "cmake"))
 
     def build(self):
-        tools.save("CMakeLists.txt", textwrap.dedent("""\
+        def escape(p):
+            return p.replace("\\", "/")
+
+        tools.save("CMakeLists.txt", textwrap.dedent(f"""\
             cmake_minimum_required(VERSION 3.0)
             project(cmake_wrapper)
 
-            include(conanbuildinfo.cmake)
+            include("{escape(self.install_folder)}/conanbuildinfo.cmake")
             conan_basic_setup(TARGETS)
 
-            add_subdirectory({cmake_folder} pdfium_cmake)
-        """).format(
-            cmake_folder=os.path.join(self.source_folder, "cmake").replace("\\", "/"),
-        ))
+            add_subdirectory("{escape(self.source_folder)}/cmake" pdfium_cmake)
+        """))
 
         cmake = CMake(self)
         cmake.verbose = True
