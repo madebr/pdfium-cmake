@@ -7,7 +7,7 @@ include(CMakeDependentOption)
 include(GNUInstallDirs)
 
 if(NOT CMAKE_CXX_STANDARD)
-    set(CMAKE_CXX_STANDARD 14)
+    set(CMAKE_CXX_STANDARD 17)
 endif()
 
 if(CMAKE_SYSTEM_NAME MATCHES "Linux")
@@ -15,6 +15,9 @@ if(CMAKE_SYSTEM_NAME MATCHES "Linux")
 endif()
 if(ANDROID OR APPLE OR CHROMEOS OR LINUX)
     set(POSIX ON)
+endif()
+if(APPLE AND NOT IOS)
+    set(MACOS ON)
 endif()
 
 option(BUILD_SHARED_LIBS "Build shared libs" OFF)
@@ -98,6 +101,8 @@ target_compile_definitions(pdfium_implementation_config INTERFACE
     FPDF_IMPLEMENTATION
 )
 
+find_package(absl REQUIRED)
+
 add_library(pdfium_public_config INTERFACE)
 add_library(pdfium::public_config ALIAS pdfium_public_config)
 target_compile_definitions(pdfium_public_config INTERFACE
@@ -112,6 +117,17 @@ target_compile_definitions(pdfium_public_config INTERFACE
         >
     >
     $<$<BOOL:${PDF_USE_WIN32_GDI}>:PDFIUM_PRINT_TEXT_WITH_GDI>
+    IS_ANDROID=$<BOOL:${ANDROID}>
+    IS_IOS=$<BOOL:${IOS}>
+    IS_LINUX=$<BOOL:${LINUX}>
+    IS_MAC=$<BOOL:${MACOS}>
+    IS_APPLE=$<BOOL:${APPLE}>
+    IS_WIN=$<BOOL:${WIN32}>
+    IS_POSIX=$<BOOL:${POSIX}>
+)
+target_link_libraries(pdfium_public_config
+    INTERFACE
+        absl::absl
 )
 
 add_library(pdfium_common_config INTERFACE)

@@ -5,6 +5,7 @@ add_library(pdfium_constants OBJECT EXCLUDE_FROM_ALL
     "${PDFIUM_ROOT}/constants/annotation_flags.h"
     "${PDFIUM_ROOT}/constants/appearance.cpp"
     "${PDFIUM_ROOT}/constants/appearance.h"
+    "${PDFIUM_ROOT}/constants/ascii.h"
     "${PDFIUM_ROOT}/constants/form_fields.cpp"
     "${PDFIUM_ROOT}/constants/form_fields.h"
     "${PDFIUM_ROOT}/constants/form_flags.h"

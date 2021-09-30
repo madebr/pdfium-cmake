@@ -20,8 +20,6 @@ add_library(pdfium_fpdfsdk OBJECT EXCLUDE_FROM_ALL
     "${PDFIUM_ROOT}/fpdfsdk/cpdfsdk_baannothandler.h"
     "${PDFIUM_ROOT}/fpdfsdk/cpdfsdk_customaccess.cpp"
     "${PDFIUM_ROOT}/fpdfsdk/cpdfsdk_customaccess.h"
-    "${PDFIUM_ROOT}/fpdfsdk/cpdfsdk_fieldaction.cpp"
-    "${PDFIUM_ROOT}/fpdfsdk/cpdfsdk_fieldaction.h"
     "${PDFIUM_ROOT}/fpdfsdk/cpdfsdk_filewriteadapter.cpp"
     "${PDFIUM_ROOT}/fpdfsdk/cpdfsdk_filewriteadapter.h"
     "${PDFIUM_ROOT}/fpdfsdk/cpdfsdk_formfillenvironment.cpp"
@@ -64,6 +62,7 @@ add_library(pdfium_fpdfsdk OBJECT EXCLUDE_FROM_ALL
     "${PDFIUM_ROOT}/fpdfsdk/fpdf_thumbnail.cpp"
     "${PDFIUM_ROOT}/fpdfsdk/fpdf_transformpage.cpp"
     "${PDFIUM_ROOT}/fpdfsdk/fpdf_view.cpp"
+    "${PDFIUM_ROOT}/fpdfsdk/ipdfsdk_annothandler.cpp"
     "${PDFIUM_ROOT}/fpdfsdk/ipdfsdk_annothandler.h"
 )
 add_library(pdfium::fpdfsdk ALIAS pdfium_fpdfsdk)

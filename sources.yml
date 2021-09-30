@@ -17,9 +17,9 @@ urls:
     git_url: "https://chromium.googlesource.com/chromium/src/build"
 branches:
   current:
-    pdfium: "fdbfb3c44434f3de59d2e23a8dbfeefe52608167"
-    trace_event_common: "1169114f57e5045401e2d3793b7f10f3655b46ea"
-    chromium_build: "9d173680cfe9eb6ef32283e7769810dfd18e2c18"
+    pdfium: "d8ce1653bc79f8fda26d637aa88ea295a1a05e4b"
+    trace_event_common: "68d816952258c9d817bba656ee2664b35507f01b"
+    chromium_build: "2278900a4482055b503476461118ae0f818a9a40"
   master:
     pdfium: "main"
     trace_event_common: "main"

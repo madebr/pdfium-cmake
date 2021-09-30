@@ -101,7 +101,6 @@ target_link_libraries(pdfium_core_fxcrt
     PRIVATE
         pdfium::strict_config
     PUBLIC
-        pdfium::thirdparty_pdfium_base
         pdfium::thirdparty_freetype
         ICU::uc
 )

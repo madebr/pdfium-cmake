@@ -3,6 +3,8 @@ add_library(pdfium_core_fpdfapi_page OBJECT EXCLUDE_FROM_ALL
     "${PDFIUM_ROOT}/core/fpdfapi/page/cpdf_allstates.h"
     "${PDFIUM_ROOT}/core/fpdfapi/page/cpdf_annotcontext.cpp"
     "${PDFIUM_ROOT}/core/fpdfapi/page/cpdf_annotcontext.h"
+    "${PDFIUM_ROOT}/core/fpdfapi/page/cpdf_basedcs.cpp"
+    "${PDFIUM_ROOT}/core/fpdfapi/page/cpdf_basedcs.h"
     "${PDFIUM_ROOT}/core/fpdfapi/page/cpdf_clippath.cpp"
     "${PDFIUM_ROOT}/core/fpdfapi/page/cpdf_clippath.h"
     "${PDFIUM_ROOT}/core/fpdfapi/page/cpdf_color.cpp"

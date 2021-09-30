@@ -42,6 +42,7 @@ class PdfiumConan(ConanFile):
             del self.options.fPIC
 
     def requirements(self):
+        self.requires("abseil/20210324.2")
         self.requires("freetype/2.10.4")
         self.requires("icu/69.1")
         self.requires("lcms/2.11")
@@ -56,7 +57,7 @@ class PdfiumConan(ConanFile):
 
     def validate(self):
         if self.settings.compiler.cppstd:
-            tools.check_min_cppstd(self, 14)
+            tools.check_min_cppstd(self, 17)
         minimum_compiler_versions = {
             "gcc": 8,
             "Visual Studio": 15,
@@ -84,6 +85,7 @@ class PdfiumConan(ConanFile):
         ))
 
         cmake = CMake(self)
+        cmake.verbose = True
         cmake.definitions["PDFIUM_ROOT"] = os.path.join(self.source_folder, "pdfium").replace("\\", "/")
         cmake.definitions["USE_LIBJPEG_TURBO"] = self.options.with_libjpeg == "libjpeg-turbo"
         cmake.configure(source_folder=self.build_folder)

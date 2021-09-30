@@ -162,6 +162,8 @@ elseif(WIN32)
         "${PDFIUM_ROOT}/core/fxge/cfx_windowsrenderdevice.h"
         "${PDFIUM_ROOT}/core/fxge/dib/cfx_dibextractor.cpp"
         "${PDFIUM_ROOT}/core/fxge/dib/cfx_dibextractor.h"
+        "${PDFIUM_ROOT}/core/fxge/win32/cfx_psfonttracker.cpp",
+        "${PDFIUM_ROOT}/core/fxge/win32/cfx_psfonttracker.h",
         "${PDFIUM_ROOT}/core/fxge/win32/cfx_psrenderer.cpp"
         "${PDFIUM_ROOT}/core/fxge/win32/cfx_psrenderer.h"
         "${PDFIUM_ROOT}/core/fxge/win32/cgdi_device_driver.cpp"
