@@ -24,7 +24,7 @@ jobs:
             ("ubuntu-latest",   "default"),
             ("windows-latest",  "default"),
             ("macos-latest",    "default"),
-            ("ubuntu-latest",   "${{ github.workspace }}/conan/profiles/android22-armv8"),
+            ("ubuntu-latest",   "${{ github.workspace }}/conan/profiles/android21-armv8"),
           ]
           branch_list = ["current"]
           if "${{ github.event_name }}" != "release":
