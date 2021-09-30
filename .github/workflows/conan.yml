@@ -20,6 +20,7 @@ jobs:
           import itertools
           import json
           import pprint
+          import shlex
           os_profile_list = [
             ("ubuntu-latest",   "default"),
             ("windows-latest",  "default"),
@@ -29,7 +30,13 @@ jobs:
           branch_list = ["current"]
           if "${{ github.event_name }}" != "release":
             branch_list.append("master")
-          matrix = [{"os": os, "conan-profile": profile, "branch": branch} for (os, profile), branch in itertools.product(os_profile_list, branch_list)]
+          matrix = []
+          for (os, profile), branch in itertools.product(os_profile_list, branch_list):
+            conan_extra_args = []
+            if "armv8" in profile:
+              # Work around missing `self.cpp_info.env_info.CONAN_CMAKE_SYSTEM_PROCESSOR = "aarch64"` in android-ndk recipe
+              conan_extra_args.extend(["-e", "CONAN_CMAKE_SYSTEM_PROCESSOR=aarch64"])
+            matrix.append({"os": os, "conan-profile": profile, "branch": branch, "conan-extra-args": shlex.join(conan_extra_args)})
           pprint.pprint(matrix)
           print("::set-output name=matrix::{}".format(json.dumps(matrix)))
   build-conan:
@@ -61,7 +68,7 @@ jobs:
         shell: bash
         run: |
           conan install . pdfium/${{ matrix.branch }} -pr:h ${{ matrix.conan-profile }} -pr:b default \
-            -o pdfium:shared=False --build missing \
+            -o pdfium:shared=False --build missing ${{ matrix.conan-extra-args }} \
                           -if static/build
           conan source  . -if static/build -sf static/source
           conan build   . -if static/build -sf static/source -bf static/build -pf static/package
