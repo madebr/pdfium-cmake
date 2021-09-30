@@ -8,5 +8,5 @@ os=Android
 os.api_level=21
 [options]
 [build_requires]
-*: android-ndk/r22b
+*: android-ndk/r23
 [env]
