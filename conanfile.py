@@ -14,6 +14,7 @@ class PdfiumConan(ConanFile):
     topics = ("conan", "pdfium", "generate", "generation", "rendering", "pdf", "document", "print")
     homepage = "https://opensource.google/projects/pdfium"
     url = "https://github.com/conan-io/conan-center-index"
+
     settings = "os", "arch", "compiler", "build_type"
     options = {
         "shared": [True, False],
@@ -88,8 +89,6 @@ class PdfiumConan(ConanFile):
         cmake.verbose = True
         cmake.definitions["PDFIUM_ROOT"] = os.path.join(self.source_folder, "pdfium").replace("\\", "/")
         cmake.definitions["USE_LIBJPEG_TURBO"] = self.options.with_libjpeg == "libjpeg-turbo"
-        if self.settings.arch == "armv8":
-            cmake.definitions["CMAKE_SYSTEM_PROCESSOR"] = "aarch64"
         cmake.configure(source_folder=self.build_folder)
         cmake.build()
 

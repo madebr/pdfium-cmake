@@ -10,3 +10,4 @@ os.api_level=21
 [build_requires]
 *: android-ndk/r23
 [env]
+CONAN_CMAKE_SYSTEM_PROCESSOR=aarch64  # Missing in android-ndk recipe
