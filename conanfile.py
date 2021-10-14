@@ -90,6 +90,8 @@ class PdfiumConan(ConanFile):
         cmake.verbose = True
         cmake.definitions["PDFIUM_ROOT"] = os.path.join(self.source_folder, "pdfium").replace("\\", "/")
         cmake.definitions["USE_LIBJPEG_TURBO"] = self.options.with_libjpeg == "libjpeg-turbo"
+        if tools.get_env("CONAN_CMAKE_SYSTEM_PROCESSOR"):
+            cmake.definitions["CMAKE_SYSTEM_PROCESSOR"] = tools.get_env("CONAN_CMAKE_SYSTEM_PROCESSOR")
         cmake.configure(source_folder=self.build_folder)
         cmake.build()
 
